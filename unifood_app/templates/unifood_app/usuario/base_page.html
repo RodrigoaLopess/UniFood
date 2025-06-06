@@ -7,105 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{% block title %}UniFood{% endblock %}</title>
   {% bootstrap_css %}
-  <style>
-    body, html {
-      margin: 0;
-      height: 100%;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fafb;
-    }
-
-.sidebar .logo {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    overflow: hidden;
-    /* Remova background branco */
-}
-.sidebar .logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-
-    /* Sidebar fixa */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 60px;
-      background: linear-gradient(180deg, #ff9f00 0%, #ff6600 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 1rem;
-      gap: 2rem;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-      z-index: 1030; /* acima do Bootstrap navbar padrão */
-    }
-
-    .sidebar .logo {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: #ff6600;
-      font-size: 1.2rem;
-      user-select: none;
-    }
-
-    .sidebar button, .sidebar a {
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-    .sidebar button:hover, .sidebar a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      color: #fff;
-    }
-
-    /* Espaço para conteúdo principal */
-    .main-content {
-      margin-left: 60px; /* mesma largura da sidebar */
-      padding: 1.5rem 2rem;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .sidebar {
-        width: 50px;
-      }
-      .main-content {
-        margin-left: 50px;
-        padding: 1rem;
-      }
-      .sidebar button, .sidebar a {
-        font-size: 1.2rem;
-        width: 35px;
-        height: 35px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/layout.css' %}">
 </head>
 <body>
   <nav class="sidebar">
@@ -120,13 +22,18 @@
     {% endif %}
   </nav>
 
+  <header class="header">
+      <h1 class="site-title">UniFood</h1>
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="btn btn-link">Sair</a>
+      {% endif %}
+  </header>
+
   <main class="main-content">
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
   </main>
 
   {% bootstrap_javascript %}
-  <!-- Font Awesome JS para os ícones -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
