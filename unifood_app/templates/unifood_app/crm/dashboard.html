@@ -1,0 +1,33 @@
+{% extends 'unifood_app/usuario/base_page.html' %}
+{% block title %}CRM Dashboard{% endblock %}
+{% block content %}
+<div class="container my-5" style="padding-top: 80px;">
+    <h2 class="container-title">CRM Dashboard</h2>
+    <div class="row text-center">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Pedidos</h5>
+                    <p class="display-6">{{ total_pedidos }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Produtos</h5>
+                    <p class="display-6">{{ total_produtos }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Clientes</h5>
+                    <p class="display-6">{{ total_clientes }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

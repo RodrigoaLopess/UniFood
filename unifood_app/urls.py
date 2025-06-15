@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import usuario, pedidos, produto, item_pedido
+from .views import usuario, pedidos, produto, item_pedido, crm
 from .views.produto import ProdutoCreateAPIView
 
 urlpatterns = [
@@ -15,6 +15,7 @@ urlpatterns = [
     path('pedido/remover_pedido', pedidos.remover_pedido, name='remover_pedido'),
     path('produto/feed_produtos', produto.feed_produtos, name="feed"),
     path('item_pedido/listar/<int:pedido_id>/', item_pedido.listar_itens_pedido, name="listar_itens_pedido"),
+    path('crm/dashboard', crm.dashboard, name='crm_dashboard'),
     path('api/produtos/', ProdutoCreateAPIView.as_view(), name='api-produto-create'),
 ]
 
